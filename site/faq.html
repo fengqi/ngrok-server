@@ -1,0 +1,255 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>ngrok - secure introspectable tunnels to localhost</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ngrok secure introspectable tunnels to localhost webhook development tool and debugging tool">
+    <meta name="author" content="inconshreveable">
+
+    <style type="text/css">
+      html, body { margin: 0; padding: 0; }
+
+      .wordmark a:hover { text-decoration: none; }
+
+      .container-fluid { max-width: 757px; margin: 0 auto; padding: 20px 0; }
+      #footer li a { color: inherit; font-size: 12px; }
+
+      pre code, code { border: 0; }
+      code.well { display: block; }
+    </style>
+
+
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/bootstrap-responsive.min.css" />
+
+    <style type="text/css">
+      body {
+        padding-top: 20px;
+        padding-bottom: 40px;
+      }
+
+      /* Custom container */
+      .container-fluid {
+        margin: 0 auto;
+        max-width: 700px;
+        padding: 0;
+      }
+      .container-fluid > hr {
+        margin: 30px 0;
+      }
+
+      .masthead h3 a { color: inherit; text-decoration: none; }
+
+      .footer { color: #aaa; }
+
+      strong { color: #000; }
+
+      .quotes blockquote { height: 78px; }
+
+      h2 {
+        color: #dd4814;
+      }
+
+      h2.first {
+        margin-top: 0;
+      }
+
+      h4 {
+        color: #1c4a3d;
+        color: #1c8a3d;
+        color: #040;
+      }
+
+      /* Main marketing message and sign up button */
+      .jumbotron {
+        margin: 30px 0 60px;
+        text-align: left;
+      }
+      .jumbotron h1 {
+        font-size: 54px;
+        line-height: 1;
+      }
+      .jumbotron .btn {
+        font-size: 21px;
+        padding: 14px 24px;
+      }
+
+      /* Supporting marketing content */
+      .marketing {
+        margin: 30px 0;
+      }
+
+      h4 {
+        margin-top: 30px;
+      }
+
+      .feature h4 {
+        margin-top: 10px;
+      }
+
+      .feature p {
+          height: 78px;
+      }
+
+      .marketing .feature {
+        height: 200px;
+      }
+
+      #dl tr:first-child td, #dl tr:first-child th {
+        border-top: 0;
+      }
+
+      #dl .detected {
+        background-color: #fffffa;
+      }
+    </style>
+
+  </head>
+
+  <body>
+
+        <div id="nav">
+        <div class="container-fluid">
+            <div class="masthead">
+                <ul class="nav nav-pills pull-right">
+
+
+                        <li class="">
+                            <a href="index.html">Home</a>
+                        </li>
+
+
+
+                        <li class="">
+                            <a href="download.html">Download</a>
+                        </li>
+
+
+
+                        <li class="">
+                            <a href="doc.html">Docs</a>
+                        </li>
+
+
+                        <li class="active">
+                            <a href="faq.html">FAQ</a>
+                        </li>
+
+
+                </ul>
+                <h3 class="wordmark muted"><a href="index.html">ngrok</a></h3>
+            </div>
+        </div>
+    </div>
+
+        <div class="container-fluid">
+            <hr style="margin-top: 20px;" />
+        </div>
+
+
+
+
+
+
+
+<div class="container-fluid">
+
+
+    <span class="pull-right muted">
+        Version: <strong>1.X</strong>
+    </span>
+
+    <h2>Frequently Asked Questions</h2>
+
+    <h4 id="proxy">Does ngrok work behind an HTTP Proxy?</h4>
+    <p><strong>Yes.</strong> You may specify an HTTP proxy to connect through in ngrok's configuration file or by using
+    the standard unix environment variable <code>http_proxy</code>. Consult the <a href="doc.html#proxy">documentation on
+    running ngrok through an HTTP proxy</a> for more details.
+    </p>
+
+    <h4 id="apache-virtual-hosts">I use Apache with virtual hosts for development. Can I use ngrok to expose one of my sites?</h4>
+    <p><strong>Yes.</strong>
+    Use Apache's <code>ServerAlias</code> directive to properly route tunneled ngrok requests to your site.
+    <pre><code>&lt;VirtualHost *:80&gt;
+    ServerName  example.dev
+    ServerAlias example.ngrok.com
+    ...
+&lt;VirtualHost&gt;</code></pre>
+
+    Then invoke ngrok requesting the proper subdomain to tunnel requests from example.ngrok.com to your example.dev site:
+    </p>
+    <p><pre><code>ngrok -subdomain example 80</code></pre></p>
+
+    <h4 id="nginx-virtual-hosts">I use nginx with virtual hosts for development. Can I use ngrok to expose one of my sites?</h4>
+    <p><strong>Yes.</strong>
+    Use multiple arguments to nginx's server_name directive to properly route tunneled ngrok requests to your site.
+    <pre><code>server {
+    listen       80;
+    server_name  example.ngrok.com example.dev;
+    ...
+}</code></pre>
+
+    Then invoke ngrok requesting the proper subdomain to tunnel requests from example.ngrok.com to your example.dev site:
+    </p>
+    <p><pre><code>ngrok -subdomain example 80</code></pre></p>
+
+    <h4 id="wordpress">Can I tunnel a Wordpress site over ngrok? When I try, all of the links are broken.</h4>
+    <p><strong>Yes.</strong> You need to add one of the following plugins to force Wordpress to issue relative URLs.
+    <ul>
+        <li><a href="https://github.com/optimizamx/odt-relative-urls" target="_blank">https://github.com/optimizamx/odt-relative-urls</a></li>
+        <li><a href="http://wordpress.org/plugins/relative-url/" target="_blank">http://wordpress.org/plugins/relative-url/</a></li>
+        <li><a href="http://wordpress.org/plugins/root-relative-urls/" target="_blank">http://wordpress.org/plugins/root-relative-urls/</a></li>
+    </ul>
+    </p>
+
+    <h4 id="privacy">What information is logged or stored about my tunnels on ngrok.com?</h4>
+    <p>
+        <strong>ngrok does not log or store any data transmitted through your tunneled connections.</strong>
+        ngrok.com does log some information about the connections which are used for debugging purposes and metrics like the name of the
+        tunnel and the duration of connections.
+        You may audit the source code for the ngrok server to see exactly what is logged on the production server.
+    </p>
+
+    <h4 id="self-hosting">Can I run my own ngrok server?</h4>
+    <p>
+        <strong>Yes.</strong> ngrok's server code is open-source and available on the <a href="https://github.com/inconshreveable/ngrok" target="_blank">ngrok github project</a>
+        Consult the <a href="https://github.com/inconshreveable/ngrok/blob/master/docs/SELFHOSTING.md" target="_blank">documentation for running your own ngrokd server</a>
+    </p>
+
+    <h4 id="websocket">Does ngrok tunnel websocket connections?</h4>
+    <p>
+        <strong>Yes.</strong> However, there is currently no support for introspecting them.
+    </p>
+
+    <h4 id="name">How do I pronounce ngrok?</h4>
+    <p>
+        <em>en-grok</em>
+    </p>
+</div>
+
+
+
+
+    <div class="container-fluid"><hr /></div>
+    <div id="footer">
+        <div class="container-fluid">
+            <div class="row-fluid">
+                &copy; <a href="https://inconshreveable.com" target="_blank">inconshreveable</a> 2015
+                <ul class="pull-right text-right unstyled muted">
+                    <li><a><img src="img/email.png" /></a></li>
+                    <li><hr/></li>
+                    <li><a href="code.html">Code</a></li>
+                    <li><a href="">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+  </body>
+
+
+</html>

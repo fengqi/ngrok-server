@@ -1,0 +1,412 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>ngrok - secure introspectable tunnels to localhost</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ngrok secure introspectable tunnels to localhost webhook development tool and debugging tool">
+    <meta name="author" content="inconshreveable">
+
+    <style type="text/css">
+      html, body { margin: 0; padding: 0; }
+
+      .wordmark a:hover { text-decoration: none; }
+
+      .container-fluid { max-width: 757px; margin: 0 auto; padding: 20px 0; }
+      #footer li a { color: inherit; font-size: 12px; }
+
+      pre code, code { border: 0; }
+      code.well { display: block; }
+    </style>
+
+
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/bootstrap-responsive.min.css" />
+
+    <style type="text/css">
+      body {
+        padding-top: 20px;
+        padding-bottom: 40px;
+      }
+
+      /* Custom container */
+      .container-fluid {
+        margin: 0 auto;
+        max-width: 700px;
+        padding: 0;
+      }
+      .container-fluid > hr {
+        margin: 30px 0;
+      }
+
+      .masthead h3 a { color: inherit; text-decoration: none; }
+
+      .footer { color: #aaa; }
+
+      strong { color: #000; }
+
+      .quotes blockquote { height: 78px; }
+
+      h2 {
+        color: #dd4814;
+      }
+
+      h2.first {
+        margin-top: 0;
+      }
+
+      h4 {
+        color: #1c4a3d;
+        color: #1c8a3d;
+        color: #040;
+      }
+
+      /* Main marketing message and sign up button */
+      .jumbotron {
+        margin: 30px 0 60px;
+        text-align: left;
+      }
+      .jumbotron h1 {
+        font-size: 54px;
+        line-height: 1;
+      }
+      .jumbotron .btn {
+        font-size: 21px;
+        padding: 14px 24px;
+      }
+
+      /* Supporting marketing content */
+      .marketing {
+        margin: 30px 0;
+      }
+
+      h4 {
+        margin-top: 30px;
+      }
+
+      .feature h4 {
+        margin-top: 10px;
+      }
+
+      .feature p {
+          height: 78px;
+      }
+
+      .marketing .feature {
+        height: 200px;
+      }
+
+      #dl tr:first-child td, #dl tr:first-child th {
+        border-top: 0;
+      }
+
+      #dl .detected {
+        background-color: #fffffa;
+      }
+    </style>
+
+
+  </head>
+
+  <body>
+
+        <div id="nav">
+        <div class="container-fluid">
+            <div class="masthead">
+                <ul class="nav nav-pills pull-right">
+
+
+                        <li class="active">
+                            <a href="index.html">Home</a>
+                        </li>
+
+
+
+                        <li class="">
+                            <a href="download.html">Download</a>
+                        </li>
+
+
+
+                        <li class="">
+                            <a href="doc.html">Docs</a>
+                        </li>
+
+
+
+                        <li class="">
+                            <a href="faq.html">FAQ</a>
+                        </li>
+
+
+                </ul>
+                <h3 class="wordmark muted"><a href="index.html">ngrok</a></h3>
+            </div>
+        </div>
+    </div>
+
+        <div class="container-fluid">
+            <hr style="margin-top: 20px;" />
+        </div>
+
+
+
+
+
+
+
+
+<div class="container-fluid">
+  <div style="margin: 100px 0px" class="jumbotron">
+    <h1 class="text-center">Secure tunnels to localhost</h1>
+    <p style="color:#666; margin: 20px 0; font-size: 20px" class="lead text-center">&#x201D;I want to expose a local server behind a NAT or firewall to the internet.&#x201D;</p>
+    <div style="margin: 35px 0" class="text-center"><a class="btn btn-large btn-primary" href="download.html">Download</a>
+
+    </div>
+  </div><a style="border-top: 1px solid rgb(245, 245, 245); padding: 10px; display: block;" class="text-center"></a><div class="row-fluid">
+  <div class="span6">
+    <h4>Demo without deploying</h4>
+    <p>Don’t constantly redeploy your in-progress work to get feedback from clients. ngrok creates
+a secure public URL (https://yourapp.ngrok.io) to a local webserver on your machine. Iterate
+quickly with immediate feedback without interrupting flow.
+    </p>
+  </div>
+  <div class="span6">
+    <h4>Simplify mobile device testing</h4>
+    <p>Test mobile apps against a development backend running on your machine. Point ngrok at your local dev
+server and then configure your app to use the ngrok URL. It won't change, even when you change networks.
+    </p>
+  </div>
+</div><img src="img/demo.png"/>
+<div class="row-fluid">
+  <div class="span6">
+    <h4>Build webhook integrations with ease</h4>
+    <p>Building webhook integrations can be a pain: it requires a public address
+and a lot of set up to trigger hooks. Save yourself time and
+frustration with ngrok. Inspect the HTTP traffic flowing over your
+tunnel. Then, replay webhook requests with one click to iterate quickly
+while staying in context.
+    </p>
+  </div>
+  <div class="span6">
+    <h4>Run personal cloud services from your own private network</h4>
+    <p>Own your data. Host personal cloud services on your own private network.
+Run webmail, file syncing, and more securely on your hardware with full
+end-to-end encryption.
+    </p>
+  </div>
+</div><img src="img/webhooks.png"/>
+
+  <hr/>
+
+
+<div class="container-fluid">
+        <div class="row-fluid">
+            <h2 id="download">下载安装</h2>
+            <p>ngrok 的安装非常简单. 根据你的平台下载 <em>没有依赖</em> 的二进制单文件压缩包, 解压并在命令行运行即可.</p>
+            <h4>Step 1: 下载 ngrok 客户端</h4>
+            <table id="dl" class="table">
+        <tr id="dl-fengqi-global-ca">
+            <th>Fengqi Global CA</th>
+            <td>
+                <span class="pull-right">
+                    <a href="//fengqi.me/fengqi-global-ca.crt" class="btn btn-inverse">
+                    <i class="icon-white icon-download"></i> Download
+                </a>
+                </span>
+            </td>
+        </tr>
+        <tr id="dl-darwin-amd64">
+            <th>Mac OS X</th>
+            <td>
+                <span class="pull-right">
+                    <a href="download/ngrok_1.7.1_darwin_amd64.zip" class="btn btn-inverse">
+                    <i class="icon-white icon-download"></i> Download
+                </a>
+                </span>
+            </td>
+        </tr>
+        <tr id="dl-windows-386">
+            <th>Windows</th>
+            <td>
+                <span class="pull-right">
+                    <a href="download/ngrok_1.7.1_windows_386.zip"
+                    class="btn btn-inverse">
+                    <i class="icon-white icon-download"></i> Download
+                </a>
+                </span>
+            </td>
+        </tr>
+        <tr id="dl-linux-amd64">
+            <th>Linux</th>
+            <td>
+                <span class="pull-right">
+                    <a href="download/ngrok_1.7.1_linux_amd64.zip" class="btn btn-inverse">
+                    <i class="icon-white icon-download"></i> Download
+                </a>
+                </span>
+            </td>
+        </tr>
+        <tr id="dl-linux-arm">
+            <th>Linux/ARM</th>
+            <td>
+                <span class="pull-right">
+                    <a href="download/ngrok_1.7.1_linux_arm.zip" class="btn btn-inverse">
+                    <i class="icon-white icon-download"></i> Download
+                </a>
+                </span>
+            </td>
+        </tr>
+
+        <tr id="dl-freebsd-amd64">
+            <th>FreeBSD</th>
+            <td>
+                <span class="pull-right">
+                    <a href="download/ngrok_1.7.1_freebsd_amd64.zip" class="btn btn-inverse">
+                    <i class="icon-white icon-download"></i> Download
+                </a>
+                </span>
+            </td>
+        </tr>
+
+        <tr id="more-platforms">
+            <th colspan="2"><a href="#" onClick="return morePlatforms()">More platforms</a></th>
+        </tr>
+        <tr id="dl-darwin-386" class="hide">
+            <th>Mac OS X 32-bit</th>
+            <td>
+                <span class="pull-right">
+                    <a href="download/ngrok_1.7.1_darwin_386.zip" class="btn btn-inverse">
+                    <i class="icon-white icon-download"></i> Download
+                </a>
+                </span>
+            </td>
+        </tr>
+        <tr id="dl-windows-amd64" class="hide">
+            <th>Windows 64-bit</th>
+            <td>
+                <span class="pull-right">
+                    <a href="download/ngrok_1.7.1_windows_amd64.zip" class="btn btn-inverse">
+                    <i class="icon-white icon-download"></i> Download
+                </a>
+                </span>
+            </td>
+        </tr>
+        <tr id="dl-linux-386" class="hide">
+            <th>Linux 32-bit</th>
+            <td>
+                <span class="pull-right">
+                    <a href="download/ngrok_1.7.1_linux_386.zip" class="btn btn-inverse">
+                    <i class="icon-white icon-download"></i> Download
+                </a>
+                </span>
+            </td>
+        </tr>
+
+        <tr id="dl-freebsd-386" class="hide">
+            <th>FreeBSD 32-bit</th>
+            <td>
+                <span class="pull-right">
+                    <a href="download/ngrok_1.7.1_freebsd_386.zip" class="btn btn-inverse">
+                    <i class="icon-white icon-download"></i> Download
+                </a>
+                </span>
+            </td>
+        </tr>
+
+    </table>
+    <script type="text/javascript">
+        var platform = navigator.platform.toUpperCase();
+        var dlElem;
+        if (platform.indexOf('MAC') !== -1) {
+            dlElem = document.getElementById("dl-darwin-amd64");
+        } else if (platform.indexOf('WIN') !== -1) {
+            dlElem = document.getElementById("dl-windows-386");
+        } else if (platform.indexOf('LINUX') !== -1) {
+            if (platform.indexOf('ARM') !== -1) {
+                dlElem = document.getElementById("dl-linux-arm");
+            } else {
+                dlElem = document.getElementById("dl-linux-amd64");
+            }
+        }
+
+        if (dlElem) {
+            dlElem.className += " detected";
+            var button = dlElem.getElementsByTagName("a")[0];
+            button.className = button.className.replace("btn-inverse", "btn-success");
+        }
+
+        function morePlatforms() {
+            document.getElementById("more-platforms").className="hide";
+            document.getElementById("dl-windows-amd64").className="";
+            document.getElementById("dl-darwin-386").className="";
+            document.getElementById("dl-linux-386").className="";
+            document.getElementById("dl-freebsd-386").className="";
+            return false;
+        }
+    </script>
+
+            <h4>Step 2: 安装证书</h4>
+            <p>下载 Fengqi Global CA 证书, 安装并信任.</p>
+            <code class="well">http://fengqi.me/fengqi-global-ca.crt</code>
+
+            <h4>Step 3: 自定义服务器</h4>
+            <p>在家目录下创建名为 <code>.ngrok</code> 的文件, 写入以下内容.</p>
+            <code class="well">
+            server_addr: "ngrok.fengqi.me:4443"<br/>
+            trust_host_root_certs: true
+            </code>
+
+            <h4>Step 4: 解压</h4>
+            <p>On Linux or OSX you can unzip ngrok from a terminal with the following command. On Windows, just double click ngrok.zip.</p>
+            <code class="well">$ unzip /path/to/ngrok.zip</code>
+
+            <h4>Step 5: 运行!</h4>
+            <p>Read the <a href="doc.html">Usage Guide</a> for documentation on how to use ngrok. Try it out by running it from the command line:</p>
+            <code class="well">$ ./ngrok -help</code>
+        </div>
+    </div>
+
+  <hr/>
+  <div class="row-fluid">
+    <h2 style="font-size:29px"><strong>581347282</strong> connections proxied to <strong>18167952</strong> tunnels</h2>
+  </div>
+  <hr/>
+  <div class="row-fluid quotes">
+    <div class="span6"><blockquote>so ngrok.com is basically the greatest thing ever. <small>@philadams</small></blockquote>
+<blockquote>ngrok: moved ~/bin already, the web inspector is gold <small>@pedromelo</small></blockquote>
+<blockquote>ngrok, probably the best tool I have started to use for my webwork since firebug also great support @inconshreveable <small>@Botto</small></blockquote>
+<blockquote>#ngrok is a dream for testing localhost with remote APIs! <small>@davejlong</small></blockquote>
+
+    </div>
+    <div class="span6"><blockquote>Ngrok is the software equivalent of Slash's guitar solo in "Sweet Child of Mine" <small>@kevinwhinnery</small></blockquote>
+<blockquote>#ngrok has become essential to my workflow. Makes testing responsive designs so much easier.<small>@_shadj</small></blockquote>
+<blockquote>ngrok is genius, replaying requests makes webhooks 1M times easier to handle. ngrok.com <small>@Breefield</small></blockquote>
+<blockquote>#ngrok has got to be the easiest local tunnel solution I've ever used.<small>@thecodeboss</small></blockquote>
+
+    </div>
+  </div>
+</div>
+
+
+    <div class="container-fluid"><hr /></div>
+    <div id="footer">
+        <div class="container-fluid">
+            <div class="row-fluid">
+                &copy; <a href="https://inconshreveable.com" target="_blank">inconshreveable</a> 2015
+                <ul class="pull-right text-right unstyled muted">
+                    <li><a><img src="img/email.png" /></a></li>
+                    <li><hr/></li>
+                    <li><a href="code.html">Code</a></li>
+                    <li><a href="">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+  </body>
+
+</html>

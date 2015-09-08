@@ -1,0 +1,386 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>ngrok - secure introspectable tunnels to localhost</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ngrok secure introspectable tunnels to localhost webhook development tool and debugging tool">
+    <meta name="author" content="inconshreveable">
+
+    <style type="text/css">
+      html, body { margin: 0; padding: 0; }
+
+      .wordmark a:hover { text-decoration: none; }
+
+      .container-fluid { max-width: 757px; margin: 0 auto; padding: 20px 0; }
+      #footer li a { color: inherit; font-size: 12px; }
+
+      pre code, code { border: 0; }
+      code.well { display: block; }
+    </style>
+
+
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/bootstrap-responsive.min.css" />
+
+    <style type="text/css">
+      body {
+        padding-top: 20px;
+        padding-bottom: 40px;
+      }
+
+      /* Custom container */
+      .container-fluid {
+        margin: 0 auto;
+        max-width: 700px;
+        padding: 0;
+      }
+      .container-fluid > hr {
+        margin: 30px 0;
+      }
+
+      .masthead h3 a { color: inherit; text-decoration: none; }
+
+      .footer { color: #aaa; }
+
+      strong { color: #000; }
+
+      .quotes blockquote { height: 78px; }
+
+      h2 {
+        color: #dd4814;
+      }
+
+      h2.first {
+        margin-top: 0;
+      }
+
+      h4 {
+        color: #1c4a3d;
+        color: #1c8a3d;
+        color: #040;
+      }
+
+      /* Main marketing message and sign up button */
+      .jumbotron {
+        margin: 30px 0 60px;
+        text-align: left;
+      }
+      .jumbotron h1 {
+        font-size: 54px;
+        line-height: 1;
+      }
+      .jumbotron .btn {
+        font-size: 21px;
+        padding: 14px 24px;
+      }
+
+      /* Supporting marketing content */
+      .marketing {
+        margin: 30px 0;
+      }
+
+      h4 {
+        margin-top: 30px;
+      }
+
+      .feature h4 {
+        margin-top: 10px;
+      }
+
+      .feature p {
+          height: 78px;
+      }
+
+      .marketing .feature {
+        height: 200px;
+      }
+
+      #dl tr:first-child td, #dl tr:first-child th {
+        border-top: 0;
+      }
+
+      #dl .detected {
+        background-color: #fffffa;
+      }
+    </style>
+
+  </head>
+
+  <body>
+
+        <div id="nav">
+        <div class="container-fluid">
+            <div class="masthead">
+                <ul class="nav nav-pills pull-right">
+
+
+                        <li class="">
+                            <a href="index.html">Home</a>
+                        </li>
+
+
+
+                        <li class="">
+                            <a href="download.html">Download</a>
+                        </li>
+
+
+
+                        <li class="active">
+                            <a href="doc.html">Doc</a>
+                        </li>
+
+
+
+                        <li class="">
+                            <a href="faq.html">FAQ</a>
+                        </li>
+
+
+                </ul>
+                <h3 class="wordmark muted"><a href="index.html">ngrok</a></h3>
+            </div>
+        </div>
+    </div>
+
+        <div class="container-fluid">
+            <hr style="margin-top: 20px;" />
+        </div>
+
+
+
+
+
+
+
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span12">
+
+        <span class="pull-right muted">
+            Version: <strong>1.X</strong>
+        </span>
+
+        <h2 id="docs">Docs</h2>
+
+        <h4>Expose a local web server to the internet</h4>
+        <p>ngrok lets you expose a locally running web service to the internet. Just tell ngrok which port your web server is running on. Let's try opening port 80 to the internet.</p>
+        <h6>Example: Open port 80 on your local machine to the internet</h6>
+        <div class="well">
+            <pre><code>$ ngrok 80</code></pre>
+        </div>
+        <div class="well">
+            <pre><code>ngrok
+
+Tunnel Status                 online
+Version                       1.3/1.3
+Forwarding                    http://3a4bfceb.ngrok.com -> 127.0.0.1:80
+Forwarding                    https://3a4bfceb.ngrok.com -> 127.0.0.1:80
+Web Interface                 http://127.0.0.1:4040
+# Conn                        0
+Avg Conn Time                 0.00ms</code></pre>
+        </div>
+        <p>When you run ngrok, it will display a UI in your terminal with the current status of the tunnel. This includes the public URL it has allocated to you which will forward to your local web service: <strong>https://3a4bfceb.ngrok.com</strong>.</p>
+
+        <h4>Inspecting your traffic</h4>
+        <p>ngrok captures all of the HTTP traffic that runs through it and provides a real-time web UI where you can introspect the requests in more detail. After starting ngrok, open <strong>http://localhost:4040</strong>. Make a request to your tunnel and you should see the web UI update with detailed information about the request including the time, duration, headers, form and query parameters as well access to examine the raw bytes sent over the wire.</p>
+        <img class="img-polaroid" src="img/inspect.png" alt="" />
+        <p class="muted">ngrok's web interface allows detailed introspection of HTTP requests and responses</p>
+
+        <h4>XML/JSON syntax checking</h4>
+        <p>ngrok has special support for the most common data interchange formats in use on the web. Any XML or JSON data is automatically pretty-printed for you and checked for syntax errors.</p>
+        <img class="img-polaroid" src="img/syntax.png" alt="" />
+        <p class="muted">ngrok highlighting the location of a JSON syntax error</p>
+
+        <h4>Replaying requests</h4>
+        <p>ngrok allows you to replay any http request that has been made through the tunnel. Click the <strong>Replay</strong> button at the top-right of any request in the web UI and ngrok will replay it to your server.</p>
+        <img class="img-polaroid" src="img/replay.png" alt="" />
+        <p class="muted">Replay any request with a single click</p>
+
+        <h4>Requiring passwords to access your tunnels</h4>
+        <p>By default, ngrok tunnels do not require any username or password to access them. This means anyone who knows or guesses the URL or your tunnel can make requests to it. You can secure your tunnels with a username and password by specifying the <code>-httpauth</code> option when creating your tunnel. This will force HTTP basic authentication on all incoming requests to your tunnels and require that the credentials match those you specify on the command line.</p>
+        <h6>Example: Add a username and password to your tunnel</h6>
+        <div class="well">
+            <pre><code>$ ngrok -httpauth="helmet:12345" 80</code></pre>
+        </div>
+        <div class="well">
+            <pre><code>$ curl -u "helmet:12345" https://3a4bfceb.ngrok.com</code></pre>
+        </div>
+
+        <h4>Requesting a specific tunnel subdomain</h4>
+        <p>ngrok assigns random hexadecimal names like <strong>https://3a4bfceb.ngrok.com</strong> to the tunnels it opens for you. For one-time personal use tunnels, this is OK. However, if you are displaying this URL at a public event like a hackathon, or you've set this URL as a webhook for some third-party application, it can be frustrating if the tunnel name changes or is difficult to read. ngrok allows you to open a tunnel with a custom subdomain of your choosing with the <code>-subdomain</code> option. Let's try opening a tunnel on the <strong>example</strong> subdomain.</p>
+        <h6>Example: Open a tunnel with a custom subdomain, 'example'</h6>
+        <div class="well">
+            <pre><code>$ ngrok -subdomain=example 80</code></pre>
+        </div>
+        <div class="well">
+            <pre><code>ngrok
+
+...
+Forwarding                    https://example.ngrok.com -> 127.0.0.1:80
+...</code></pre>
+        </div>
+
+        <h4>Forwarding non-HTTP services</h4>
+        <p>Are you developing a service that runs on IRC, SMTP, SIP, POP3, XML-RPC or even a custom network protocol that isn't HTTP? ngrok can still expose this service to the internet for you by running in TCP mode! When you run ngrok in TCP mode, it will allocate a port for you on ngrok.com and forward all traffic on that port to your local service. Unfortunately, when you run in TCP mode, ngrok does not know how to understand and parse your traffic, so its diagnostic and debugging tools are much more primitive when operating in this mode.</p>
+        <h6>Example: Forward traffic to a locally running TCP service</h6>
+        <div class="well">
+            <pre><code>$ ngrok -proto=tcp 22</code></pre>
+        </div>
+        <div class="well">
+            <pre><code>ngrok
+
+...
+Forwarding                    tcp://ngrok.com:50612 -> 127.0.0.1:22
+...</code></pre>
+        </div>
+
+        <h4>Forwarding to non-local services</h4>
+        <p>ngrok can also be used to forward traffic to services behind a NAT or firewall even if that service is not on the same machine. Forwarding traffic to another machine is as simple as adding an ip address or name before the port.</p>
+        <h6>Example: Forward traffic to a service on a host on the private network</h6>
+        <div class="well">
+            <pre><code>$ ngrok 192.168.0.1:80</code></pre>
+        </div>
+
+        <h4>Tunnels on custom domains (white label URLs) <span class="label label-info">Paid Feature</span></h4>
+        <p>ngrok has a <code>-hostname</code> option which allows you to forward traffic from your own domains without running your own ngrok server. For example, if you want ngrok to create a tunnel for <code>dev.example.com</code>, you must:
+        <ol>
+        <li>Enter your custom hostname as a Reserved Domain on your <a href="/dashboard">ngrok.com dashboard</a>. This guarantees that no one else can hijack your domain name with their own tunnel.</li>
+                <li>Create a DNS CNAME record for <code>dev.example.com</code> that points to <code>ngrok.com</code> using whatever DNS management you have for <code>example.com</code>.</li>
+                <li>Invoke ngrok with the <code>-hostname</code> option like so:
+                        <div class="well">
+                                <pre><code>$ ngrok -hostname dev.example.com 80</code></pre>
+                        </div>
+                </li>
+        </ol>
+        <strong>NB: With the <code>-hostname</code> option, you may still access your tunnel over SSL, but the certificate will not match.</strong>
+        </p>
+
+        <br /><br />
+        <h2 id="config">The ngrok configuration file</h2>
+        <p>
+            The ngrok configuration file is a completely optional very simple YAML file that allows you to use some of ngrok's more advanced features like:
+            <ol>
+                <li>Running multiple tunnels simultaneously.</li>
+                <li>Connecting to a custom ngrok server</li>
+                <li>Tweaking some of ngrok's more arcane settings.</li>
+            </ol>
+
+            The ngrok configuration file is loaded by default from <strong>~/.ngrok</strong>. You can override this to point at a different location with the <code>-config</code> command line switch.
+            </p>
+        </p>
+
+        <h4>Running multiple tunnels simultaneously</h4>
+        <p>To run multiple tunnels, you need to configure each tunnel in the configuration file using the <code>tunnels</code> parameter. The tunnels parameter takes a dictionary of names to tunnel configurations. As an example, let's define the configuration for three different tunnels. The first will be a tunnel for a client site that we're working on that only runs https traffic and has authentication. The second will be the configuration for a tunnel to allow us to access our own machine remotely via SSH by tunneling to port 22. And lastly, we'll create a tunnel that will run on my own custom domain for showing off projects at a hackathon.
+        </p>
+        <div class="well">
+            <pre><code>tunnels:
+  client:
+    auth: "user:password"
+    proto:
+      https: 8080
+  ssh:
+    proto:
+      tcp: 22
+  hacks.inconshreveable.com:
+    proto:
+      http: 9090</code></pre>
+        </div>
+
+        <p>We can then start <em>all three tunnels simultaneously</em> by using the <code>ngrok start</code> command followed by the names of the tunnels we want to start:</p>
+        <div class="well">
+            <pre><code>ngrok start client ssh hacks.inconshreveable.com</code></pre>
+        </div>
+
+        <p>The terminal should then look something like:</p>
+        <div class="well">
+            <pre><code>ngrok
+
+Tunnel Status                 online
+Version                       1.3/1.3
+Forwarding                    https://client.ngrok.com -> 127.0.0.1:8080
+Forwarding                    http://hacks.inconshreveable.com -> 127.0.0.1:9090
+Forwarding                    tcp://ngrok.com:44764 -> 127.0.0.1:22
+...</code></pre>
+        </div>
+
+        <h4>Tunnel configuration</h4>
+        <p>Each configured tunnel may specify any of five parameters: <code>proto</code>, <code>subdomain</code>, <code>auth</code>, <code>hostname</code>, and <code>remote_port</code>. Every tunnel must have a <code>proto</code> section defined which is a dictionary of protocol to local forwarding address. The <code>auth</code> parameter is the optional authentication used for http/https tunnels. The <code>remote_port</code> parameter is the optional port to bind on the remote server and is only used for tcp tunnels. ngrok uses the name of the tunnel as the subdomain or hostname for the tunnel it creates, but you can override this:</p>
+        <div class="well">
+            <pre><code>tunnels:
+  client:
+    subdomain: "example"
+    auth: "user:password"
+    proto:
+      https: 8080</code></pre>
+        </div>
+        <p>Now when you <code>ngrok start client</code> it will forward <code>example.ngrok.com -> 127.0.0.1:8080</code>. Similarly, this works
+        for custom hostnames, which can let you alias them to something shorter to type:</p>
+        <div class="well">
+            <pre><code>tunnels:
+  hacks:
+    hostname: "hacks.inconshreveable.com"
+    proto:
+      http: 9090</code></pre>
+        </div>
+    <p>For TCP tunnels, you may optionally request a specific port from the server with the <code>remote_port</code> parameter. If not specified, the server will assign you a random port.</p>
+    <div class="well">
+            <pre><code>tunnels:
+  ssh:
+    remote_port: 60123
+    proto:
+      tcp: 22</code></pre>
+        </div>
+        <h4>Other configuration options</h4>
+        <p>The ngrok configuration file additionally lets you tweak some less-common configuration settings by specifying additional top-level parameters in the config file. For example, you may explicitly set the authtoken used when validating to ngrok.com with the <code>auth_token</code> parameter. You may also change the address that ngrok binds with to serve its web inspection interface by setting <code>inspect_addr</code>:</p>
+        <div class="well">
+            <pre><code>auth_token: abc123
+inspect_addr: "0.0.0.0:8888"
+tunnels:
+  ...</code></pre>
+        </div>
+        <h4>Connecting to a custom ngrokd server</h4>
+        <p>ngrok supports connecting to another ngrokd server not hosted by ngrok.com. First, you must obviously set up your own ngrokd server. Instructions on how to run your own ngrokd are posted here: <a href="https://github.com/inconshreveable/ngrok/blob/master/docs/SELFHOSTING.md">Running your own ngrokd server</a>. When you run your own ngrokd server, you need to configure two configuration parameters to let ngrok connect securely to your custom server. First you'll set <code>server_addr</code> to point ngrok at your custom server and then <code>trust_host_root_certs</code> to make sure your TLS connections are trusted.
+        </p>
+        <div class="well">
+            <pre><code>server_addr: "example.com:4443"
+trust_host_root_certs: true
+tunnels:
+  ...</code></pre>
+        </div>
+        <h4 id="proxy">Running behind an http proxy</h4>
+        <p>Lastly, you can configure ngrok to run behind an http proxy server, which is sometimes necessary when you're on restrictive corporate networks. ngrok respects the standard unix environment variable <code>http_proxy</code>, but you can also specify it explicitly by setting the parameter <code>http_proxy</code> in the configuration file:</p>
+        <div class="well">
+            <pre><code>http_proxy: "http://user:password@10.0.0.1:3128"
+tunnels:
+  ...</code></pre>
+        </div>
+    </div>
+  </div>
+</div>
+
+
+
+    <div class="container-fluid"><hr /></div>
+    <div id="footer">
+        <div class="container-fluid">
+            <div class="row-fluid">
+                &copy; <a href="https://inconshreveable.com" target="_blank">inconshreveable</a> 2015
+                <ul class="pull-right text-right unstyled muted">
+                    <li><a><img src="img/email.png" /></a></li>
+                    <li><hr/></li>
+                    <li><a href="code.html">Code</a></li>
+                    <li><a href="">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+  </body>
+
+
+</html>
