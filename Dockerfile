@@ -3,7 +3,6 @@ FROM ubuntu:14.04
 MAINTAINER fengqi lyf362345@gmail.com
 
 ENV NGROK /opt/ngrok
-ENV DOMAIN ngrok.fengqi.me
 
 EXPOSE 80 443 4443
 
