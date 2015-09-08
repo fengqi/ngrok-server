@@ -1,0 +1,52 @@
+map $scheme $proxy_port {
+    "http"  "8080";
+    "https" "8081";
+    default "8080";
+}
+
+server {
+    listen      80;
+    listen      [::]:80;
+    listen      443 spdy ssl;
+    listen      [::]:443 spdy ssl;
+    server_name ngrok.fengqi.me;
+
+    root        /data/www/ngrok.fengqi.me;
+    index       index.html;
+
+    ssl on;
+    ssl_certificate /opt/ngrok/ngrok.fengqi.me.crt;
+    ssl_certificate_key /opt/ngrok/ngrok.fengqi.me.key;
+    include hsts.conf;
+
+    error_page 404 /404.html;
+}
+
+server {
+    listen      80;
+    listen      [::]:80;
+    listen      443 spdy ssl;
+    listen      [::]:443 spdy ssl;
+    server_name *.ngrok.fengqi.me;
+
+    ssl on;
+    ssl_certificate /opt/ngrok/ngrok.fengqi.me.crt;
+    ssl_certificate_key /opt/ngrok/ngrok.fengqi.me.key;
+    include hsts.conf;
+
+    error_page 404 /404.html;
+
+    location / {
+        proxy_intercept_errors on;
+        proxy_pass  $scheme://127.0.0.1:$proxy_port;
+        proxy_set_header    Host $http_host;
+        proxy_set_header    X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+
+    location /404.html {
+        root /data/www/ngrok.fengqi.me;
+    }
+
+    access_log off;
+    log_not_found off;
+}
