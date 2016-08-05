@@ -9,14 +9,14 @@ server {
     listen      [::]:80;
     listen      443 spdy ssl;
     listen      [::]:443 spdy ssl;
-    server_name ngrok.fengqi.me;
+    server_name fengqi.tk;
 
-    root        /data/www/ngrok.fengqi.me;
+    root        /data/www/fengqi.tk;
     index       index.html;
 
     ssl on;
-    ssl_certificate /opt/ngrok/ngrok.fengqi.me.crt;
-    ssl_certificate_key /opt/ngrok/ngrok.fengqi.me.key;
+    ssl_certificate /opt/ngrok/fengqi.tk.crt;
+    ssl_certificate_key /opt/ngrok/fengqi.tk.key;
     include hsts.conf;
 
     error_page 404 /404.html;
@@ -27,11 +27,11 @@ server {
     listen      [::]:80;
     listen      443 spdy ssl;
     listen      [::]:443 spdy ssl;
-    server_name *.ngrok.fengqi.me;
+    server_name *.fengqi.tk;
 
     ssl on;
-    ssl_certificate /opt/ngrok/ngrok.fengqi.me.crt;
-    ssl_certificate_key /opt/ngrok/ngrok.fengqi.me.key;
+    ssl_certificate /opt/ngrok/fengqi.tk.crt;
+    ssl_certificate_key /opt/ngrok/fengqi.tk.key;
     include hsts.conf;
 
     error_page 404 /404.html;
@@ -44,7 +44,7 @@ server {
     }
 
     location /404.html {
-        root /data/www/ngrok.fengqi.me;
+        root /data/www/fengqi.tk;
     }
 
     access_log off;
