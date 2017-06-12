@@ -6,6 +6,6 @@
     -tunnelAddr=":4443" \
     -tlsCrt="/opt/ngrok/ssl.crt" \
     -tlsKey="/opt/ngrok/ssl.key" \
-    -domain="fengqi.ml" \
+    -domain="lanout.tk" \
     -log-level="WARNING"
 
