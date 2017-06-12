@@ -8,7 +8,7 @@ ENV DOMAIN lanout.tk
 EXPOSE 80 443 4443
 
 COPY run.sh $NGROK/
-COPY bin/ngrokd $NGROK/
+COPY ngrok/bin/ngrokd $NGROK/
 COPY lanout.tk.crt $NGROK/ssl.crt
 COPY lanout.tk.key $NGROK/ssl.key
 
